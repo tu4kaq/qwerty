@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="day">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FDF6F3">
+<title>письмо для тебя 🤍</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23E2687E' d='M16 27C6 20 3 15.5 3 11.4A6.4 6.4 0 0 1 16 8a6.4 6.4 0 0 1 13 3.4C29 15.5 26 20 16 27Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Comfortaa:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ ПАЛИТРА: молоко, роза, бантик, масло ============ */
+:root{
+  --milk:#FDF6F3; --milk-2:#F7EBE7;
+  --paper:#FFFCFA; --paper-2:#FFF2EC; --paper-3:#FBE6DF;
+  --ink:#4A3540; --ink-soft:#6B5260; --mut:#957f8b;
+  --line:rgba(74,53,64,.13); --line-2:rgba(74,53,64,.07);
+  --rose:#E38FA6; --rose-deep:#CE6183; --bow:#E2687E; --bow-l:#F08C9E;
+  --butter:#EFC069; --sage:#8FBFA3; --sky:#8FB6D9; --lilac:#B9A6DE;
+  --ok:#6FAE8E; --warn:#C9932F; --bad:#C4707A; --info:#6E9CC4;
+  --slate:#7C8AA0;
+  --k-fur-1:#FFFFFF; --k-fur-2:#F7E9E6; --k-line:#E3CDD2; --k-whisk:#D8BFC6; --k-ink:#4A3540;
+  --liner-bg:#FDECEF; --liner-fg:#E9A8B8;
+  --shadow-s:0 6px 18px -8px rgba(140,84,104,.35);
+  --shadow-m:0 18px 40px -22px rgba(140,84,104,.45);
+  --shadow-l:0 34px 70px -30px rgba(126,70,92,.48);
+  --card:rgba(255,252,250,.82);
+  --grain:.045;
+  --ease:cubic-bezier(.22,.9,.3,1.06);
+}
+[data-theme="dusk"]{
+  --milk:#241D26; --milk-2:#2C2331;
+  --paper:#3A2F3C; --paper-2:#443747; --paper-3:#4C3D4F;
+  --ink:#F7E9EF; --ink-soft:#E2CFD9; --mut:#B49EAC;
+  --line:rgba(247,233,239,.16); --line-2:rgba(247,233,239,.08);
+  --rose:#E9A0B5; --rose-deep:#F0AFC1; --bow:#E8778C; --bow-l:#F5A0AF;
+  --butter:#F2CB80; --sage:#9DCFAE; --sky:#9CC2E2; --lilac:#C6B4E8;
+  --ok:#8FC7A6; --warn:#E0B25C; --bad:#DE909A; --info:#93B7DA;
+  --slate:#9BA7BC;
+  --k-line:#E7D2D6; --k-whisk:#DCC4CA;
+  --liner-bg:#5A4450; --liner-fg:#C98CA0;
+  --shadow-s:0 6px 18px -8px rgba(0,0,0,.5);
+  --shadow-m:0 18px 40px -22px rgba(0,0,0,.6);
+  --shadow-l:0 34px 70px -28px rgba(0,0,0,.66);
+  --card:rgba(58,47,60,.78);
+  --grain:.055;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Nunito',system-ui,sans-serif;
+  background:var(--milk); color:var(--ink);
+  min-height:100svh; overflow-x:hidden;
+  transition:background .7s ease,color .7s ease;
+  scrollbar-width:thin; scrollbar-color:var(--rose) transparent;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--milk-2)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--rose),var(--lilac));border-radius:99px;border:3px solid var(--milk-2)}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--bow),var(--rose))}
+::selection{background:var(--rose);color:#fff}
+button,input{font-family:inherit;color:inherit}
+button{background:none;border:none;cursor:pointer}
+:focus-visible{outline:2.5px solid var(--rose-deep);outline-offset:3px;border-radius:14px}
+
+/* ============ ФОН ============ */
+.bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.mesh{position:absolute;inset:-25%;
+  background:
+    radial-gradient(38% 34% at 18% 20%, color-mix(in srgb, var(--rose) 42%, transparent), transparent 68%),
+    radial-gradient(34% 30% at 82% 16%, color-mix(in srgb, var(--butter) 34%, transparent), transparent 66%),
+    radial-gradient(40% 36% at 76% 78%, color-mix(in srgb, var(--lilac) 36%, transparent), transparent 68%),
+    radial-gradient(36% 32% at 22% 82%, color-mix(in srgb, var(--sky) 32%, transparent), transparent 66%),
+    radial-gradient(30% 26% at 50% 50%, color-mix(in srgb, var(--sage) 22%, transparent), transparent 70%);
+  filter:blur(46px); opacity:.5; animation:meshDrift 34s ease-in-out infinite alternate}
+[data-theme="dusk"] .mesh{opacity:.34}
+@keyframes meshDrift{to{transform:translate3d(3%,-2.5%,0) scale(1.09) rotate(3deg)}}
+.mesh-2{position:absolute;inset:-30%;
+  background:radial-gradient(26% 22% at 62% 34%, color-mix(in srgb, var(--bow) 26%, transparent), transparent 70%),
+             radial-gradient(22% 20% at 34% 62%, color-mix(in srgb, var(--butter) 24%, transparent), transparent 70%);
+  filter:blur(60px);opacity:.42;animation:meshDrift2 46s ease-in-out infinite alternate}
+@keyframes meshDrift2{to{transform:translate3d(-4%,3%,0) scale(1.12)}}
+.vignette{position:absolute;inset:0;background:radial-gradient(120% 92% at 50% 34%, transparent 46%, color-mix(in srgb, var(--milk) 88%, transparent) 100%)}
+.grain{position:fixed;inset:0;z-index:4;pointer-events:none;opacity:var(--grain);mix-blend-mode:multiply;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+[data-theme="dusk"] .grain{mix-blend-mode:screen}
+.wash{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+.wash.yes{opacity:1;background:
+  radial-gradient(58% 46% at 50% 42%, color-mix(in srgb, var(--bow) 22%, transparent), transparent 72%),
+  radial-gradient(86% 54% at 50% 104%, color-mix(in srgb, var(--butter) 20%, transparent), transparent 74%)}
+.wash.no{opacity:1;background:linear-gradient(180deg, color-mix(in srgb, var(--slate) 22%, transparent), color-mix(in srgb, #4C5568 26%, transparent))}
+#fx{position:fixed;inset:0;z-index:3;pointer-events:none}
+
+/* ============ ШАПКА ============ */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:10px;
+  padding:calc(10px + env(safe-area-inset-top)) 16px 10px;
+  background:linear-gradient(180deg, color-mix(in srgb, var(--milk) 92%, transparent), transparent);
+  animation:fadeDown .8s var(--ease) both}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}}
+.brand{display:flex;align-items:center;gap:9px;font-family:'Comfortaa';font-weight:700;font-size:14.5px;letter-spacing:.01em}
+.brand svg{width:30px;height:26px;flex-shrink:0}
+.brand i{font-style:normal;color:var(--rose-deep)}
+.top-actions{margin-left:auto;display:flex;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 13px;border-radius:99px;
+  background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-s);
+  font-size:12.5px;font-weight:800;color:var(--ink-soft);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:.24s var(--ease)}
+.pill svg{width:16px;height:16px;flex-shrink:0}
+.pill:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--rose) 60%,transparent);color:var(--ink)}
+.pill:active{transform:scale(.95)}
+.pill.off{color:var(--mut)}
+.pill .lbl{display:inline}
+@media (max-width:430px){ .pill .lbl{display:none} .pill{padding:0 12px} }
+
+/* ============ СЦЕНА ============ */
+main{position:relative;z-index:2;max-width:520px;margin:0 auto;
+  padding:calc(76px + env(safe-area-inset-top)) 18px 30px;
+  display:flex;flex-direction:column;align-items:center}
+.intro{text-align:center;margin-bottom:6px;animation:riseIn .8s var(--ease) .1s both}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--rose-deep);background:color-mix(in srgb,var(--rose) 16%,transparent);
+  border:1px solid color-mix(in srgb,var(--rose) 34%,transparent);padding:6px 13px;border-radius:99px}
+.eyebrow b{width:6px;height:6px;border-radius:50%;background:var(--bow);animation:blip 2.4s ease-in-out infinite}
+@keyframes blip{50%{opacity:.35;transform:scale(.7)}}
+.intro h1{font-family:'Comfortaa';font-weight:700;font-size:clamp(19px,4.6vw,26px);line-height:1.3;margin-top:12px;color:var(--ink)}
+.intro p{font-size:13px;color:var(--mut);font-weight:600;margin-top:6px}
+@keyframes riseIn{from{opacity:0;transform:translateY(20px)}}
+
+.stage{--env-w:clamp(268px,82vw,352px);--env-h:calc(var(--env-w) * .62);
+  display:flex;flex-direction:column;align-items:center;width:100%;
+  transition:filter 1s ease}
+body.sad .stage{filter:saturate(.66)}
+
+/* --- котик --- */
+.kitty{position:relative;width:clamp(104px,27vw,136px);margin-bottom:-10px;z-index:5;
+  animation:riseIn .9s var(--ease) .25s both}
+.kitty-svg{display:block;width:100%;height:auto;overflow:visible}
+.k-float{animation:kFloat 4.6s ease-in-out infinite;transform-origin:100px 150px}
+@keyframes kFloat{50%{transform:translateY(-6px) rotate(-1.2deg)}}
+.k-eye{transform-box:fill-box;transform-origin:center;animation:blink 5.6s infinite}
+.k-eye:nth-child(2){animation-delay:.06s}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.08)}}
+.k-bow{transform-box:fill-box;transform-origin:150px 32px;animation:bowWob 5.2s ease-in-out infinite}
+@keyframes bowWob{40%{transform:rotate(-6deg)}70%{transform:rotate(4deg)}}
+.k-ear-l,.k-ear-r{transform-box:fill-box;transform-origin:bottom center}
+.kitty.murr .k-ear-l{animation:earTw .5s ease}
+.kitty.murr .k-ear-r{animation:earTw .5s ease .07s}
+@keyframes earTw{50%{transform:rotate(-9deg) scaleY(1.06)}}
+.k-eyes-heart,.k-eyes-sad,.k-blush,.k-tear{opacity:0;transition:opacity .45s ease}
+.kitty[data-mood="happy"] .k-eyes-normal{opacity:0}
+.kitty[data-mood="happy"] .k-eyes-heart{opacity:1;animation:heartPop .6s var(--ease)}
+.kitty[data-mood="happy"] .k-blush{opacity:1}
+.kitty[data-mood="happy"] .k-float{animation:kJoy 1.5s ease-in-out infinite}
+@keyframes kJoy{0%,100%{transform:translateY(0) rotate(-2deg)}30%{transform:translateY(-13px) rotate(3deg)}60%{transform:translateY(-3px) rotate(-3deg)}}
+@keyframes heartPop{from{transform:scale(.3)}}
+.kitty[data-mood="sad"] .k-eyes-normal{opacity:0}
+.kitty[data-mood="sad"] .k-eyes-sad{opacity:1}
+.kitty[data-mood="sad"] .k-tear{opacity:1;animation:tearFall 2.4s ease-in infinite}
+.kitty[data-mood="sad"] .k-float{animation:kSad 5s ease-in-out infinite}
+.kitty[data-mood="sad"] .k-bow{animation:none;transform:rotate(16deg) translateY(4px)}
+@keyframes kSad{50%{transform:translateY(4px) rotate(2.5deg)}}
+@keyframes tearFall{0%{transform:translateY(0);opacity:0}18%{opacity:1}100%{transform:translateY(46px);opacity:0}}
+.kitty[data-mood="think"] .k-float{animation:kThink 1.4s ease-in-out}
+@keyframes kThink{50%{transform:rotate(-11deg) translateY(-4px)}}
+.k-cloud{position:absolute;right:-34px;top:-14px;width:70px;opacity:0;transform:translateY(-8px) scale(.8);
+  transition:.6s var(--ease);pointer-events:none}
+.kitty[data-mood="sad"] .k-cloud{opacity:1;transform:none;animation:cloudFloat 4s ease-in-out infinite}
+@keyframes cloudFloat{50%{transform:translateX(5px) translateY(-4px)}}
+.bubble{position:absolute;left:calc(100% - 6px);top:6px;background:var(--paper);border:1px solid var(--line);
+  color:var(--rose-deep);font-family:'Caveat';font-size:19px;font-weight:700;padding:3px 12px;border-radius:14px 14px 14px 3px;
+  box-shadow:var(--shadow-s);opacity:0;transform:scale(.6) translateY(6px);transition:.3s var(--ease);white-space:nowrap;pointer-events:none}
+.bubble.show{opacity:1;transform:none}
+
+/* --- конверт --- */
+.env-wrap{position:relative;padding-top:calc(var(--env-h) * .58);width:var(--env-w);
+  animation:riseIn .9s var(--ease) .35s both}
+.env{position:relative;width:100%;height:var(--env-h);perspective:1000px;cursor:pointer;
+  transform-style:preserve-3d;will-change:transform}
+.env-back{position:absolute;inset:0;border-radius:16px;background:linear-gradient(165deg,var(--paper-2),var(--paper-3));
+  box-shadow:var(--shadow-l), inset 0 1px 0 color-mix(in srgb,#fff 60%,transparent);z-index:1}
+.env-clip{position:absolute;inset:0;clip-path:inset(-500px -80px 0 -80px);z-index:2}
+.letter{position:absolute;left:11px;right:11px;bottom:calc(var(--env-h) * .06);height:calc(var(--env-h) * 1.15);
+  background:linear-gradient(178deg,var(--paper),var(--paper-2));
+  border-radius:12px 12px 4px 4px;border:1px solid var(--line-2);
+  box-shadow:0 -6px 24px -12px rgba(120,70,90,.4), inset 0 1px 0 color-mix(in srgb,#fff 70%,transparent);
+  transform:translateY(calc(var(--env-h) * .60));
+  transition:transform 1.05s cubic-bezier(.3,.9,.25,1.02);
+  padding:14px 16px;overflow:hidden}
+.env.open .letter{transform:translateY(calc(var(--env-h) * -.35))}
+.letter::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(180deg,transparent 0 25px, var(--line-2) 25px 26px);
+  -webkit-mask:linear-gradient(180deg,transparent 34%,#000 60%);mask:linear-gradient(180deg,transparent 34%,#000 60%)}
+.letter-top{display:flex;align-items:flex-start;gap:8px}
+.hi{font-family:'Caveat';font-size:clamp(17px,4.4vw,21px);font-weight:600;color:var(--ink-soft);line-height:1.1}
+.date{font-size:9.5px;font-weight:700;color:var(--mut);letter-spacing:.05em;margin-top:2px}
+.stamp{margin-left:auto;width:38px;height:44px;flex-shrink:0;border-radius:4px;background:var(--paper-3);
+  border:1px dashed color-mix(in srgb,var(--rose) 60%,transparent);display:flex;align-items:center;justify-content:center;
+  transform:rotate(4deg);box-shadow:var(--shadow-s);position:relative}
+.stamp svg{width:28px;height:24px}
+.stamp::after{content:"♥";position:absolute;bottom:1px;right:3px;font-size:7px;color:var(--bow)}
+.q{font-family:'Caveat';font-weight:700;font-size:clamp(29px,8.2vw,42px);line-height:1.06;color:var(--rose-deep);
+  margin-top:8px;letter-spacing:.005em;position:relative;z-index:1}
+.q .qd{color:var(--bow)}
+.ps{font-size:clamp(10.5px,2.9vw,12px);font-weight:600;color:var(--mut);margin-top:7px;line-height:1.4;position:relative;z-index:1}
+.sign{font-family:'Caveat';font-size:16px;color:var(--ink-soft);margin-top:9px;opacity:.85}
+.letter .fade-item{opacity:0;transform:translateY(8px);transition:.6s var(--ease)}
+.env.open .letter .fade-item{opacity:1;transform:none}
+.env.open .letter .fade-item:nth-child(1){transition-delay:.45s}
+.env.open .letter .q{transition-delay:.58s}
+.env.open .letter .ps{transition-delay:.7s}
+.env.open .letter .sign{transition-delay:.8s}
+
+.env-front{position:absolute;left:0;right:0;bottom:0;height:66%;z-index:3;border-radius:0 0 16px 16px;overflow:hidden;
+  filter:drop-shadow(0 -3px 8px rgba(120,70,90,.10))}
+.env-front svg{display:block;width:100%;height:100%}
+.flap{position:absolute;left:0;right:0;top:0;height:53%;z-index:6;transform-origin:top center;transform-style:preserve-3d;
+  transition:transform 1s cubic-bezier(.55,.06,.2,1), z-index 0s .35s}
+.env.open .flap{transform:rotateX(-176deg);z-index:0;transition:transform 1s cubic-bezier(.55,.06,.2,1), z-index 0s .3s}
+.flap-face{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 100%);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.flap-out{background:linear-gradient(178deg,var(--paper-2),var(--paper-3));
+  filter:drop-shadow(0 3px 6px rgba(120,70,90,.12))}
+.flap-in{transform:rotateX(180deg)}
+.flap-in svg{width:100%;height:100%;display:block}
+.seal{position:absolute;left:50%;top:calc(53% - 26px);width:54px;height:54px;transform:translateX(-50%);z-index:7;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 34% 28%, var(--bow-l), var(--bow) 58%, #C2506A);
+  box-shadow:0 8px 18px -8px rgba(160,60,84,.7), inset 0 2px 3px rgba(255,255,255,.45), inset 0 -3px 6px rgba(120,30,50,.35);
+  transition:.55s var(--ease);animation:sealPulse 2.6s ease-in-out infinite}
+.seal svg{width:28px;height:28px;opacity:.9}
+@keyframes sealPulse{50%{box-shadow:0 8px 26px -6px rgba(200,70,100,.85), inset 0 2px 3px rgba(255,255,255,.45), inset 0 -3px 6px rgba(120,30,50,.35), 0 0 0 8px color-mix(in srgb,var(--bow) 12%,transparent)}}
+.env.open .seal{opacity:0;transform:translateX(-50%) translateY(-14px) scale(.55) rotate(-24deg);pointer-events:none;animation:none}
+.env.bounce{animation:envBounce .6s var(--ease)}
+@keyframes envBounce{35%{transform:translateY(-10px) scale(1.025)}70%{transform:translateY(2px) scale(.995)}}
+.env.slam{animation:envSlam .5s ease}
+@keyframes envSlam{20%{transform:translateX(-9px) rotate(-1.4deg)}45%{transform:translateX(8px) rotate(1.2deg)}70%{transform:translateX(-4px)}}
+.env-hint{font-size:11px;font-weight:700;color:var(--mut);text-align:center;margin-top:14px;opacity:.9}
+.env-hint b{color:var(--rose-deep);font-weight:800}
+
+/* ============ КАРТОЧКА ОТВЕТА ============ */
+.slot{width:100%;max-width:420px;margin-top:20px;position:relative}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:18px;
+  box-shadow:var(--shadow-m);-webkit-backdrop-filter:blur(14px) saturate(1.2);backdrop-filter:blur(14px) saturate(1.2);
+  transition:.4s var(--ease)}
+.answer{animation:riseIn .8s var(--ease) 1.5s both;scroll-margin-bottom:130px}
+.answer.hide{opacity:0;transform:translateY(-14px) scale(.97);pointer-events:none;position:absolute;inset:0}
+.answer.nudge{animation:nudge .45s ease}
+@keyframes nudge{25%{transform:translateX(-7px)}55%{transform:translateX(6px)}80%{transform:translateX(-3px)}}
+.a-label{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+.a-label svg{width:14px;height:14px;color:var(--rose-deep)}
+.input-row{display:flex;gap:9px;align-items:center}
+.field{flex:1;position:relative;min-width:0}
+.field input{width:100%;height:52px;border-radius:16px;border:1.5px solid var(--line);
+  background:color-mix(in srgb,var(--paper) 75%,transparent);padding:0 15px;font-size:16px;font-weight:700;
+  color:var(--ink);transition:.25s var(--ease);outline:none}
+.field input::placeholder{color:var(--mut);font-weight:600;opacity:.85}
+.field input:focus{border-color:var(--rose);background:var(--paper);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--rose) 18%,transparent)}
+.send{width:52px;height:52px;flex-shrink:0;border-radius:16px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(140deg,var(--bow-l),var(--bow) 60%,var(--rose-deep));color:#fff;
+  box-shadow:0 10px 22px -10px rgba(190,70,96,.85), inset 0 1px 0 rgba(255,255,255,.4);transition:.22s var(--ease)}
+.send svg{width:22px;height:22px;transition:transform .3s var(--ease)}
+.send:hover{transform:translateY(-2px) scale(1.03);filter:brightness(1.06)}
+.send:active{transform:scale(.93)}
+.send.ready svg{animation:sendBeat 1.3s ease-in-out infinite}
+@keyframes sendBeat{50%{transform:scale(1.18)}}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.chip{font-size:12.5px;font-weight:800;padding:9px 14px;min-height:38px;border-radius:99px;
+  border:1.5px solid var(--line);background:color-mix(in srgb,var(--paper) 60%,transparent);color:var(--ink-soft);transition:.2s var(--ease)}
+.chip:hover{transform:translateY(-2px)}
+.chip:active{transform:scale(.94)}
+.chip.yes:hover,.chip.yes.hot{border-color:var(--rose);color:var(--rose-deep);background:color-mix(in srgb,var(--rose) 14%,transparent)}
+.chip.no:hover,.chip.no.hot{border-color:var(--slate);color:var(--slate);background:color-mix(in srgb,var(--slate) 12%,transparent)}
+.chip.hot{animation:chipHot 1.1s ease-in-out 2}
+@keyframes chipHot{50%{transform:translateY(-3px) scale(1.04)}}
+.hint{font-size:11.5px;font-weight:600;color:var(--mut);margin-top:11px;line-height:1.5;display:flex;gap:6px;align-items:flex-start}
+.hint svg{width:13px;height:13px;flex-shrink:0;margin-top:1px;color:var(--rose)}
+.hint.warn{color:var(--bad)}
+.hint.warn svg{color:var(--bad)}
+
+/* ============ РЕЗУЛЬТАТ ============ */
+.result{display:none;text-align:center;padding:24px 20px}
+.result.show{display:block;animation:resultIn .75s var(--ease) both}
+@keyframes resultIn{from{opacity:0;transform:translateY(26px) scale(.94)}}
+.r-badge{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:800;letter-spacing:.16em;
+  text-transform:uppercase;padding:6px 13px;border-radius:99px;margin-bottom:14px}
+.result.yes .r-badge{color:var(--rose-deep);background:color-mix(in srgb,var(--rose) 18%,transparent);border:1px solid color-mix(in srgb,var(--rose) 40%,transparent)}
+.result.no .r-badge{color:var(--slate);background:color-mix(in srgb,var(--slate) 16%,transparent);border:1px solid color-mix(in srgb,var(--slate) 36%,transparent)}
+.r-msg{font-size:clamp(36px,10.5vw,60px);line-height:1.06;font-family:'Caveat';font-weight:700;color:var(--rose-deep);
+  text-shadow:0 6px 26px color-mix(in srgb,var(--bow) 26%,transparent)}
+.result.no .r-msg{font-family:'Comfortaa';font-weight:700;font-size:clamp(23px,6.6vw,38px);line-height:1.22;
+  color:var(--slate);text-shadow:none;letter-spacing:-.01em}
+.r-msg span{display:inline-block;opacity:0;transform:translateY(16px) rotate(-3deg);animation:wordIn .6s var(--ease) forwards}
+@keyframes wordIn{to{opacity:1;transform:none}}
+.r-sub{font-size:13px;font-weight:600;color:var(--ink-soft);margin-top:12px;line-height:1.55;
+  opacity:0;animation:riseIn .6s var(--ease) .55s forwards}
+.r-hearts{display:flex;justify-content:center;gap:6px;margin-top:14px;height:20px}
+.r-hearts svg{width:16px;height:16px;color:var(--bow);opacity:0;animation:hPop .5s var(--ease) forwards}
+@keyframes hPop{from{opacity:0;transform:scale(.2) translateY(8px)}to{opacity:.9;transform:none}}
+.r-actions{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:18px;
+  opacity:0;animation:riseIn .6s var(--ease) .75s forwards}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 18px;border-radius:15px;
+  font-size:13.5px;font-weight:800;transition:.22s var(--ease);border:1.5px solid transparent}
+.btn svg{width:16px;height:16px}
+.btn.primary{background:linear-gradient(140deg,var(--bow-l),var(--bow) 62%,var(--rose-deep));color:#fff;
+  box-shadow:0 12px 26px -12px rgba(190,70,96,.9), inset 0 1px 0 rgba(255,255,255,.4)}
+.btn.primary:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.btn.ghost{border-color:var(--line);background:color-mix(in srgb,var(--paper) 55%,transparent);color:var(--ink-soft)}
+.btn.ghost:hover{border-color:var(--rose);color:var(--rose-deep);transform:translateY(-2px)}
+.btn:active{transform:scale(.95)}
+.result.no .btn.primary{background:linear-gradient(140deg,var(--rose),var(--rose-deep));box-shadow:0 12px 26px -12px rgba(160,80,100,.8)}
+
+footer{position:relative;z-index:2;text-align:center;padding:22px 18px calc(26px + env(safe-area-inset-bottom));
+  font-size:11.5px;font-weight:600;color:var(--mut)}
+footer .kbd{font-family:'Comfortaa';font-size:10px;border:1px solid var(--line);border-bottom-width:2px;
+  padding:2px 6px;border-radius:6px;background:var(--card);color:var(--ink-soft)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));z-index:30;transform:translate(-50%,150%);
+  background:var(--card);border:1px solid var(--line);border-radius:15px;padding:11px 17px;font-size:12.5px;font-weight:800;
+  color:var(--ink);box-shadow:var(--shadow-m);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  transition:transform .5s var(--ease);max-width:90vw;text-align:center}
+.toast.show{transform:translate(-50%,0)}
+
+@media (max-width:400px){
+  main{padding-top:calc(70px + env(safe-area-inset-top))}
+  .intro h1{font-size:18px}
+  .intro p{display:none}
+  .card{padding:15px;border-radius:20px}
+  .k-cloud{right:-24px;width:58px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.15s !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="mesh"></div><div class="mesh-2"></div><div class="vignette"></div>
+</div>
+<div class="wash" id="wash" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <svg viewBox="0 0 200 170" aria-hidden="true">
+      <path d="M52 52 L44 18 L84 36 Z" fill="#fff" stroke="#E3CDD2" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M148 52 L156 18 L116 36 Z" fill="#fff" stroke="#E3CDD2" stroke-width="7" stroke-linejoin="round"/>
+      <ellipse cx="100" cy="86" rx="62" ry="50" fill="#fff" stroke="#E3CDD2" stroke-width="7"/>
+      <ellipse cx="78" cy="86" rx="7" ry="10" fill="#4A3540"/>
+      <ellipse cx="122" cy="86" rx="7" ry="10" fill="#4A3540"/>
+      <ellipse cx="100" cy="101" rx="9" ry="6" fill="#EFC069"/>
+      <path d="M150 30 C136 14 118 19 121 33 C124 46 141 43 150 30 Z" fill="#E2687E"/>
+      <path d="M150 30 C164 14 182 19 179 33 C176 46 159 43 150 30 Z" fill="#E2687E"/>
+      <circle cx="150" cy="31" r="9" fill="#F08C9E"/>
+    </svg>
+    kitty<i>letter</i>
+  </div>
+  <div class="top-actions">
+    <button type="button" class="pill" id="themeBtn" aria-label="Сменить тему" title="Сменить тему">
+      <span id="themeIcon"></span><span class="lbl" id="themeLbl">утро</span>
+    </button>
+    <button type="button" class="pill" id="soundBtn" aria-pressed="true" title="Звук">
+      <span id="soundIcon"></span><span class="lbl" id="soundLbl">звук</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <span class="eyebrow"><b></b>личное письмо · только для тебя</span>
+    <h1>у меня к тебе один вопрос</h1>
+    <p>открой конверт глазами и ответь честно 🤍</p>
+  </div>
+
+  <section class="stage">
+    <!-- КОТИК -->
+    <div class="kitty" id="kitty" data-mood="ask">
+      <svg class="kitty-svg" viewBox="0 0 200 170" role="img" aria-label="Котик с бантиком">
+        <defs>
+          <linearGradient id="fur" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" style="stop-color:var(--k-fur-1)"/><stop offset="1" style="stop-color:var(--k-fur-2)"/>
+          </linearGradient>
+          <linearGradient id="bowg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" style="stop-color:var(--bow-l)"/><stop offset="1" style="stop-color:var(--bow)"/>
+          </linearGradient>
+        </defs>
+        <g class="k-float">
+          <g class="k-paws">
+            <ellipse cx="66" cy="150" rx="18" ry="12" fill="url(#fur)" style="stroke:var(--k-line)" stroke-width="2.4"/>
+            <ellipse cx="134" cy="150" rx="18" ry="12" fill="url(#fur)" style="stroke:var(--k-line)" stroke-width="2.4"/>
+            <path d="M60 148v5M66 147v6M72 148v5M128 148v5M134 147v6M140 148v5" style="stroke:var(--k-line)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </g>
+          <path class="k-ear-l" d="M52 52 L44 18 L84 36 Z" fill="url(#fur)" style="stroke:var(--k-line)" stroke-width="2.6" stroke-linejoin="round"/>
+          <path class="k-ear-r" d="M148 52 L156 18 L116 36 Z" fill="url(#fur)" style="stroke:var(--k-line)" stroke-width="2.6" stroke-linejoin="round"/>
+          <ellipse cx="100" cy="86" rx="62" ry="50" fill="url(#fur)" style="stroke:var(--k-line)" stroke-width="2.6"/>
+          <g style="stroke:var(--k-whisk)" stroke-width="2.6" stroke-linecap="round" fill="none">
+            <path d="M36 72 L8 64"/><path d="M34 86 L4 86"/><path d="M36 100 L8 110"/>
+            <path d="M164 72 L192 64"/><path d="M166 86 L196 86"/><path d="M164 100 L192 110"/>
+          </g>
+          <g class="k-blush">
+            <ellipse cx="60" cy="103" rx="12" ry="6.5" style="fill:var(--rose)" opacity=".55"/>
+            <ellipse cx="140" cy="103" rx="12" ry="6.5" style="fill:var(--rose)" opacity=".55"/>
+          </g>
+          <g class="k-eyes-normal">
+            <ellipse class="k-eye" cx="78" cy="86" rx="6" ry="8.6" style="fill:var(--k-ink)"/>
+            <ellipse class="k-eye" cx="122" cy="86" rx="6" ry="8.6" style="fill:var(--k-ink)"/>
+          </g>
+          <g class="k-eyes-heart" style="fill:var(--bow)">
+            <path d="M78 94c-8-5.6-11-9-11-12.6a5 5 0 0 1 11-2.6 5 5 0 0 1 11 2.6C89 85 86 88.4 78 94Z"/>
+            <path d="M122 94c-8-5.6-11-9-11-12.6a5 5 0 0 1 11-2.6 5 5 0 0 1 11 2.6C133 85 130 88.4 122 94Z"/>
+          </g>
+          <g class="k-eyes-sad" style="stroke:var(--k-ink)" stroke-width="3.4" stroke-linecap="round" fill="none">
+            <path d="M70 88 Q78 80 86 88"/><path d="M114 88 Q122 80 130 88"/>
+          </g>
+          <ellipse cx="100" cy="101" rx="8" ry="5.6" style="fill:var(--butter)"/>
+          <path class="k-tear" d="M74 96c3 4.6 5 7.4 5 9.6a5 5 0 0 1-10 0c0-2.2 2-5 5-9.6Z" style="fill:var(--sky)" opacity=".9"/>
+          <g class="k-bow">
+            <path d="M150 30 C136 14 118 19 121 33 C124 46 141 43 150 30 Z" fill="url(#bowg)"/>
+            <path d="M150 30 C164 14 182 19 179 33 C176 46 159 43 150 30 Z" fill="url(#bowg)"/>
+            <circle cx="150" cy="31" r="8" style="fill:var(--bow-l)"/>
+            <circle cx="147" cy="28" r="2.4" fill="#fff" opacity=".55"/>
+          </g>
+        </g>
+      </svg>
+      <svg class="k-cloud" viewBox="0 0 90 66" aria-hidden="true">
+        <path d="M22 34a13 13 0 0 1 4-25 16 16 0 0 1 30-3 12 12 0 0 1 12 12 11 11 0 0 1-4 21H24Z" style="fill:var(--slate)" opacity=".55"/>
+        <g style="stroke:var(--sky)" stroke-width="3.4" stroke-linecap="round" opacity=".8">
+          <path d="M28 44l-4 10"/><path d="M45 46l-4 12"/><path d="M62 44l-4 10"/>
+        </g>
+      </svg>
+      <div class="bubble" id="bubble">мур ♥</div>
+    </div>
+
+    <!-- КОНВЕРТ -->
+    <div class="env-wrap">
+      <div class="env" id="env" role="button" tabindex="0" aria-label="Конверт с письмом. Нажми, чтобы котик замурчал">
+        <div class="env-back"></div>
+        <div class="env-clip">
+          <div class="letter" id="letter">
+            <div class="letter-top fade-item">
+              <div>
+                <div class="hi" id="letterHi">привет, солнце ☀</div>
+                <div class="date">письмо №1 · сегодня</div>
+              </div>
+              <div class="stamp">
+                <svg viewBox="0 0 200 170" aria-hidden="true">
+                  <path d="M52 52 L44 18 L84 36 Z" fill="#fff" stroke="#E3CDD2" stroke-width="8" stroke-linejoin="round"/>
+                  <path d="M148 52 L156 18 L116 36 Z" fill="#fff" stroke="#E3CDD2" stroke-width="8" stroke-linejoin="round"/>
+                  <ellipse cx="100" cy="86" rx="62" ry="50" fill="#fff" stroke="#E3CDD2" stroke-width="8"/>
+                  <ellipse cx="78" cy="86" rx="8" ry="11" fill="#4A3540"/><ellipse cx="122" cy="86" rx="8" ry="11" fill="#4A3540"/>
+                  <ellipse cx="100" cy="102" rx="10" ry="7" fill="#EFC069"/>
+                  <path d="M150 30 C136 14 118 19 121 33 C124 46 141 43 150 30 Z" fill="#E2687E"/>
+                  <path d="M150 30 C164 14 182 19 179 33 C176 46 159 43 150 30 Z" fill="#E2687E"/>
+                </svg>
+              </div>
+            </div>
+            <h2 class="q fade-item" id="letterQ">ты меня любишь<span class="qd">?</span></h2>
+            <p class="ps fade-item" id="letterPs">ответь честно — я всё пойму. можно своими словами, я умная 🤍</p>
+            <p class="sign fade-item" id="letterSign">твоя китти</p>
+          </div>
+        </div>
+        <div class="env-front">
+          <svg viewBox="0 0 340 132" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="frontG" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" style="stop-color:var(--paper-2)"/><stop offset="1" style="stop-color:var(--paper-3)"/>
+              </linearGradient>
+            </defs>
+            <path d="M0 0 L170 92 L340 0 L340 132 L0 132 Z" fill="url(#frontG)"/>
+            <path d="M0 132 L170 92 L340 132" fill="none" style="stroke:var(--line)" stroke-width="1.4"/>
+            <path d="M0 0 L170 92 L340 0" fill="none" style="stroke:var(--line)" stroke-width="1.6"/>
+            <path d="M14 118 h44" style="stroke:var(--rose)" stroke-width="2.4" stroke-linecap="round" opacity=".35"/>
+            <path d="M14 108 h28" style="stroke:var(--rose)" stroke-width="2.4" stroke-linecap="round" opacity=".22"/>
+          </svg>
+        </div>
+        <div class="flap">
+          <div class="flap-face flap-out"></div>
+          <div class="flap-face flap-in">
+            <svg viewBox="0 0 340 132" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <pattern id="liner" width="24" height="24" patternUnits="userSpaceOnUse">
+                  <rect width="24" height="24" style="fill:var(--liner-bg)"/>
+                  <path d="M12 17c-4.6-3.2-6.4-5.4-6.4-7.6a3.2 3.2 0 0 1 6.4-1.7 3.2 3.2 0 0 1 6.4 1.7c0 2.2-1.8 4.4-6.4 7.6Z" style="fill:var(--liner-fg)" opacity=".55"/>
+                  <circle cx="2" cy="3" r="1.1" style="fill:var(--liner-fg)" opacity=".4"/>
+                </pattern>
+              </defs>
+              <rect width="340" height="132" fill="url(#liner)"/>
+            </svg>
+          </div>
+        </div>
+        <div class="seal" id="seal" aria-hidden="true">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <g fill="#fff" opacity=".92">
+              <ellipse cx="9" cy="10" rx="3" ry="3.8"/><ellipse cx="16" cy="7.6" rx="3" ry="4"/>
+              <ellipse cx="23" cy="10" rx="3" ry="3.8"/><ellipse cx="27" cy="17" rx="2.6" ry="3.2"/>
+              <ellipse cx="5" cy="17" rx="2.6" ry="3.2"/>
+              <path d="M16 14c4.4 0 8 3.4 8 7 0 2.9-2.3 4.8-5.2 4.8-1.4 0-2-.6-2.8-.6s-1.4.6-2.8.6C10.3 25.8 8 23.9 8 21c0-3.6 3.6-7 8-7Z"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <p class="env-hint">конверт <b>мурчит</b>, если его нажать</p>
+    </div>
+  </section>
+
+  <!-- ОТВЕТ / РЕЗУЛЬТАТ -->
+  <div class="slot">
+    <form class="card answer" id="answerCard" autocomplete="off">
+      <div class="a-label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H7l-3 3z"/></svg>
+        твой ответ
+      </div>
+      <div class="input-row">
+        <div class="field">
+          <input id="answer" type="text" inputmode="text" enterkeyhint="send" maxlength="120"
+                 placeholder="напиши «да» или «нет»…" aria-label="Твой ответ на вопрос">
+        </div>
+        <button type="submit" class="send" id="sendBtn" aria-label="Отправить ответ">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C3.8 15.4 2 11.9 2 8.9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 10 2.9c0 3-1.8 6.5-10 12.1Z"/></svg>
+        </button>
+      </div>
+      <div class="chips">
+        <button type="button" class="chip yes" data-say="да">да 💗</button>
+        <button type="button" class="chip yes" data-say="конечно люблю">конечно!</button>
+        <button type="button" class="chip yes" data-say="обожаю тебя">обожаю</button>
+        <button type="button" class="chip no" data-say="нет">нет 🙃</button>
+      </div>
+      <p class="hint" id="hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg>
+        <span id="hintText">пиши как чувствуешь — котик поймёт почти любые слова</span>
+      </p>
+    </form>
+
+    <div class="card result" id="resultCard" role="status" aria-live="polite">
+      <span class="r-badge" id="rBadge"></span>
+      <div class="r-msg" id="rMsg"></div>
+      <p class="r-sub" id="rSub"></p>
+      <div class="r-hearts" id="rHearts"></div>
+      <div class="r-actions" id="rActions"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  сделано с 🤍 и щепоткой мурчания · <span class="kbd">esc</span> — начать заново
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+'use strict';
+const $ = s => document.querySelector(s);
+const root = document.documentElement, body = document.body;
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE = matchMedia('(pointer: fine)').matches;
+
+/* ---------- сохранённое ---------- */
+const store = {
+  get(){ try { return JSON.parse(localStorage.getItem('kittyletter:v1')) || {}; } catch(e){ return {}; } },
+  set(d){ try { localStorage.setItem('kittyletter:v1', JSON.stringify(d)); } catch(e){} }
+};
+const saved = store.get();
+const S = { sound: saved.sound !== 0, theme: saved.theme === 'dusk' ? 'dusk' : 'day' };
+const save = () => store.set(S);
+
+/* ---------- иконки ---------- */
+const I = {
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>',
+  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.4A8.4 8.4 0 0 1 9.6 4 8.5 8.5 0 1 0 20 14.4Z"/></svg>',
+  vol:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3L11 6v12l-4-3.5H4z"/><path d="M15 9.6a3.4 3.4 0 0 1 0 4.8M17.8 7a7 7 0 0 1 0 10"/></svg>',
+  mute:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5h3L11 6v12l-4-3.5H4z"/><path d="m15.5 9.5 5 5m0-5-5 5"/></svg>',
+  heart:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21C3.8 15.4 2 11.9 2 8.9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 10 2.9c0 3-1.8 6.5-10 12.1Z"/></svg>',
+  hug:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a3.8 3.8 0 0 1 7-2.2A3.8 3.8 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg>',
+  back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 1 0 2.4-5.7L4 8.6"/><path d="M4 3.6v5h5"/></svg>',
+  spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 3.2 13.7 9 19.5 10.7 13.7 12.4 12 18.2 10.3 12.4 4.5 10.7 10.3 9Z"/></svg>'
+};
+
+/* ---------- звук (мягкий, по умолчанию включён) ---------- */
+let AC = null, master = null, noise = null;
+function audio(){
+  if (AC) return true;
+  try {
+    const C = window.AudioContext || window.webkitAudioContext;
+    if (!C) return false;
+    AC = new C();
+    master = AC.createGain(); master.gain.value = S.sound ? .55 : 0;
+    const lp = AC.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 5200;
+    master.connect(lp); lp.connect(AC.destination);
+    noise = AC.createBuffer(1, Math.floor(AC.sampleRate * .3), AC.sampleRate);
+    const d = noise.getChannelData(0);
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random()*2-1) * Math.pow(1 - i/d.length, 1.6);
+    return true;
+  } catch(e){ return false; }
+}
+function tone(f, t0, dur, g0, type){
+  const o = AC.createOscillator(), g = AC.createGain();
+  o.type = type || 'sine'; o.frequency.value = f;
+  g.gain.setValueAtTime(.0001, t0);
+  g.gain.exponentialRampToValueAtTime(g0, t0 + .02);
+  g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
+  o.connect(g); g.connect(master); o.start(t0); o.stop(t0 + dur + .05);
+}
+function rustle(t0, g0, freq){
+  const s = AC.createBufferSource(); s.buffer = noise;
+  const bp = AC.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = freq || 2400; bp.Q.value = 1.1;
+  const g = AC.createGain();
+  g.gain.setValueAtTime(g0, t0); g.gain.exponentialRampToValueAtTime(.0001, t0 + .26);
+  s.connect(bp); bp.connect(g); g.connect(master); s.start(t0);
+}
+function sfx(kind){
+  if (!S.sound || !audio()) return;
+  try {
+    if (AC.state === 'suspended') AC.resume();
+    const t = AC.currentTime;
+    if (kind === 'open'){ rustle(t, .05, 2600); tone(659.25, t + .06, .5, .05); tone(987.77, t + .16, .45, .03); }
+    else if (kind === 'yes'){ [523.25, 659.25, 783.99, 1046.5].forEach((f,i) => tone(f, t + i*.1, .75, .055)); tone(1567.98, t + .42, .6, .022); }
+    else if (kind === 'no'){ tone(392, t, .5, .05, 'triangle'); tone(293.66, t + .17, .7, .045, 'triangle'); tone(98, t + .02, .3, .05); }
+    else if (kind === 'hug'){ tone(880, t, .45, .045); tone(1174.66, t + .08, .5, .03); }
+    else if (kind === 'murr'){ tone(196, t, .34, .05, 'triangle'); tone(261.63, t + .1, .3, .032); rustle(t, .022, 900); }
+    else if (kind === 'nudge'){ tone(440, t, .2, .04); tone(349.23, t + .1, .24, .032); }
+    else { tone(740, t, .12, .035); }
+  } catch(e){}
+}
+function updateSound(){
+  $('#soundIcon').innerHTML = S.sound ? I.vol : I.mute;
+  $('#soundLbl').textContent = S.sound ? 'звук' : 'тихо';
+  $('#soundBtn').classList.toggle('off', !S.sound);
+  $('#soundBtn').setAttribute('aria-pressed', String(!!S.sound));
+  $('#soundBtn').title = S.sound ? 'Выключить звук' : 'Включить звук';
+}
+$('#soundBtn').addEventListener('click', () => {
+  S.sound = S.sound ? 0 : 1;
+  if (AC && master) master.gain.setTargetAtTime(S.sound ? .55 : 0, AC.currentTime, .03);
+  updateSound(); save(); if (S.sound) sfx('ui');
+  toast(S.sound ? 'звук включён 🔔' : 'тишина 🤫');
+});
+
+/* ---------- тема ---------- */
+function applyTheme(){
+  root.dataset.theme = S.theme;
+  $('#themeIcon').innerHTML = S.theme === 'day' ? I.sun : I.moon;
+  $('#themeLbl').textContent = S.theme === 'day' ? 'утро' : 'вечер';
+  const mt = document.querySelector('meta[name=theme-color]');
+  if (mt) mt.content = S.theme === 'day' ? '#FDF6F3' : '#241D26';
+  palette = null;
+}
+$('#themeBtn').addEventListener('click', () => {
+  S.theme = S.theme === 'day' ? 'dusk' : 'day';
+  applyTheme(); save(); sfx('ui');
+  toast(S.theme === 'day' ? 'доброе утро ☀' : 'тёплый вечер 🌙');
+});
+
+/* ---------- тост ---------- */
+let toastT = 0;
+function toast(msg){
+  const el = $('#toast');
+  el.textContent = msg; el.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+/* ---------- частицы ---------- */
+const cv = $('#fx');
+let ctx = cv.getContext('2d'), W = 0, H = 0, DPR = 1, palette = null;
+const parts = [];
+const MAX = RM ? 40 : 170;
+function colors(){
+  if (palette) return palette;
+  const cs = getComputedStyle(root);
+  const g = n => cs.getPropertyValue(n).trim() || '#E38FA6';
+  palette = { rose:g('--rose'), bow:g('--bow'), butter:g('--butter'), lilac:g('--lilac'), sky:g('--sky'), sage:g('--sage'), slate:g('--slate'), deep:g('--rose-deep') };
+  return palette;
+}
+function sizeCanvas(){
+  DPR = Math.min(2, window.devicePixelRatio || 1);
+  W = window.innerWidth; H = window.innerHeight;
+  cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
+  cv.style.width = W + 'px'; cv.style.height = H + 'px';
+  ctx = cv.getContext('2d');
+}
+function heartPath(c, s){
+  c.beginPath();
+  c.moveTo(0, s*.30);
+  c.bezierCurveTo(-s*.64, -s*.22, -s*.36, -s*.80, 0, -s*.36);
+  c.bezierCurveTo(s*.36, -s*.80, s*.64, -s*.22, 0, s*.30);
+  c.closePath();
+}
+function push(p){ if (parts.length < MAX) parts.push(p); }
+function heart(x, y, opt){
+  const o = opt || {}, c = colors();
+  const cols = [c.rose, c.bow, c.deep, c.butter, c.lilac];
+  push({ t:'h', x, y, vx:o.vx != null ? o.vx : (Math.random()-.5)*.7,
+    vy:o.vy != null ? o.vy : -(.35 + Math.random()*.75),
+    s:o.s || (8 + Math.random()*13), r:Math.random()*6.28, vr:(Math.random()-.5)*.035,
+    life:0, max:o.max || (150 + Math.random()*130), col:o.col || cols[(Math.random()*cols.length)|0],
+    a:o.a || .8, sw:Math.random()*6.28, ss:.012 + Math.random()*.02 });
+}
+function petal(x, y){
+  const c = colors();
+  push({ t:'p', x, y, vx:(Math.random()-.5)*.35, vy:-(.16 + Math.random()*.34),
+    s:5 + Math.random()*7, r:Math.random()*6.28, vr:(Math.random()-.5)*.02,
+    life:0, max:340 + Math.random()*200, col:Math.random() < .5 ? c.rose : c.lilac, a:.34,
+    sw:Math.random()*6.28, ss:.008 + Math.random()*.012 });
+}
+function spark(x, y, col){
+  const c = colors();
+  const ang = Math.random()*6.28, sp = 1 + Math.random()*3.2;
+  push({ t:'s', x, y, vx:Math.cos(ang)*sp, vy:Math.sin(ang)*sp - .5,
+    s:2 + Math.random()*3.4, r:0, vr:0, life:0, max:34 + Math.random()*30,
+    col:col || (Math.random() < .5 ? c.butter : c.rose), a:.9, sw:0, ss:0 });
+}
+function drop(){
+  const c = colors();
+  push({ t:'d', x:Math.random()*(W+80) - 40, y:-20 - Math.random()*120,
+    vx:-.35, vy:5.2 + Math.random()*4.2, s:7 + Math.random()*11, r:0, vr:0,
+    life:0, max:400, col:Math.random() < .3 ? c.sky : c.slate, a:.34, sw:0, ss:0 });
+}
+function burst(x, y, n){
+  for (let i = 0; i < n; i++){
+    const a = Math.random()*6.28, sp = 1.4 + Math.random()*4.4;
+    heart(x, y, { vx:Math.cos(a)*sp, vy:Math.sin(a)*sp - 1.5, s:9 + Math.random()*15, max:130 + Math.random()*110 });
+  }
+  for (let i = 0; i < Math.round(n*.5); i++) spark(x, y);
+}
+function sadBurst(x, y){
+  const c = colors();
+  for (let i = 0; i < 14; i++) spark(x, y, c.slate);
+}
+let mode = 'idle', modeUntil = 0, lastAmb = 0, lastRain = 0, lastFlow = 0;
+function setMode(m, ms){ mode = m; modeUntil = performance.now() + (ms || 0); }
+function stepParts(now, dt){
+  if (modeUntil && now > modeUntil){ mode = state === 'yes' ? 'love' : state === 'no' ? 'drizzle' : 'idle'; modeUntil = 0; }
+  if (!RM){
+    if ((mode === 'idle' || mode === 'love') && now - lastAmb > (mode === 'love' ? 420 : 1100)){
+      lastAmb = now;
+      const x = Math.random()*W;
+      if (mode === 'love' || Math.random() < .55) heart(x, H + 20, { vy:-(.3 + Math.random()*.5), a:mode === 'love' ? .6 : .3, max:420 });
+      else petal(x, H + 20);
+    }
+    if (mode === 'rain' && now - lastRain > 55){ lastRain = now; drop(); drop(); }
+    if (mode === 'drizzle' && now - lastRain > 300){ lastRain = now; drop(); }
+    if (mode === 'love' && now - lastFlow > 240){ lastFlow = now; heart(Math.random()*W, H + 16, { vy:-(.5 + Math.random()*.7), a:.55, max:380 }); }
+  }
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  for (let i = parts.length - 1; i >= 0; i--){
+    const p = parts[i];
+    p.life += dt;
+    if (p.t === 'h' || p.t === 'p'){
+      p.sw += p.ss * dt;
+      p.x += (p.vx + Math.sin(p.sw)*.35) * dt;
+      p.y += p.vy * dt;
+      p.vy -= .0022 * dt;
+      p.vx *= Math.pow(.994, dt);
+      p.r += p.vr * dt;
+    } else if (p.t === 's'){
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      p.vy += .045 * dt; p.vx *= Math.pow(.96, dt); p.vy *= Math.pow(.97, dt);
+    } else {
+      p.x += p.vx * dt; p.y += p.vy * dt;
+    }
+    const k = p.life / p.max;
+    if (k >= 1 || p.y < -140 || p.y > H + 160 || p.x < -160 || p.x > W + 160){ parts.splice(i, 1); continue; }
+    const fade = k < .12 ? k/.12 : k > .72 ? (1-k)/.28 : 1;
+    ctx.globalAlpha = Math.max(0, Math.min(1, p.a * fade));
+    ctx.fillStyle = p.col; ctx.strokeStyle = p.col;
+    if (p.t === 'h'){
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r); heartPath(ctx, p.s); ctx.fill(); ctx.restore();
+    } else if (p.t === 'p'){
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+      ctx.beginPath(); ctx.ellipse(0, 0, p.s*.55, p.s, 0, 0, 6.283); ctx.fill(); ctx.restore();
+    } else if (p.t === 's'){
+      ctx.save(); ctx.translate(p.x, p.y); ctx.lineCap = 'round'; ctx.lineWidth = 1.6;
+      ctx.beginPath(); ctx.moveTo(-p.s, 0); ctx.lineTo(p.s, 0); ctx.moveTo(0, -p.s); ctx.lineTo(0, p.s); ctx.stroke(); ctx.restore();
+    } else {
+      ctx.save(); ctx.lineCap = 'round'; ctx.lineWidth = 1.7;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p.x - p.vx*1.4, p.y - p.s); ctx.stroke(); ctx.restore();
+    }
+  }
+  ctx.globalAlpha = 1;
+}
+
+/* ---------- котик и конверт ---------- */
+const kitty = $('#kitty'), env = $('#env'), bubble = $('#bubble');
+let bubbleT = 0;
+function say(txt, ms){
+  bubble.textContent = txt; bubble.classList.add('show');
+  clearTimeout(bubbleT); bubbleT = setTimeout(() => bubble.classList.remove('show'), ms || 1600);
+}
+function mood(m){ kitty.dataset.mood = m; }
+function murr(){
+  env.classList.remove('bounce'); void env.offsetWidth; env.classList.add('bounce');
+  kitty.classList.remove('murr'); void kitty.offsetWidth; kitty.classList.add('murr');
+  const r = env.getBoundingClientRect();
+  if (!RM) for (let i = 0; i < 7; i++) heart(r.left + r.width*(.2 + Math.random()*.6), r.top + r.height*.3, { s:8 + Math.random()*8, max:110 });
+  say(state === 'no' ? 'хмф.' : state === 'yes' ? 'мур-мур ♥' : 'мур ♥');
+  sfx('murr');
+}
+env.addEventListener('click', murr);
+env.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); murr(); } });
+
+/* ---------- разбор ответа ---------- */
+const POS_PHRASE = ['я тебя люблю','люблю тебя','очень люблю','конечно люблю','да люблю','люблю очень','безумно люблю','больше жизни','ты мое солнце','мое сердце твое','не могу без тебя','не сомневаюсь','конечно да','да конечно','а как же','еще бы','сто процентов','очень сильно','ты моя жизнь','i love you','love you','of course','yes i do'];
+const POS_TOKEN = new Set(['да','даа','ага','угу','агась','конечно','канешно','разумеется','безусловно','естественно','несомненно','люблю','обожаю','точно','именно','всегда','бесконечно','сильно','очень','хочу','согласен','согласна','давай','сердечко','yes','y','ye','yep','yeah','ya','da','sure','ofc','love','luv','ok','okay','ок','окей','ладно','мяу','мур']);
+const NEG_PHRASE = ['не люблю','конечно нет','нет конечно','скорее нет','вряд ли','не думаю','ни за что','не очень','не хочу','не любила','больше не люблю','нет и еще раз нет','отстань от меня','ты мне надоел','ты мне надоела','не испытываю','no way','i dont','dont love'];
+const NEG_TOKEN = new Set(['нет','нетт','неа','не','нету','никак','никогда','ненавижу','отстань','уйди','мимо','фу','no','n','nope','nah','net','never','false']);
+const AMB = ['не знаю','может быть','наверное','не уверен','не уверена','сложно сказать','подумаю','хз','не определился','не определилась','50 на 50','возможно','посмотрим','не понял','не поняла','что','как сказать'];
+const POS_EMOJI = ['❤','💕','💗','💖','💓','💞','😍','🥰','😘','♥','🤍','💘','💝','🩷'];
+const NEG_EMOJI = ['💔','😡','🤬','👎','🙄','😒','🤮','😠'];
+
+function classify(raw){
+  const src = (raw || '').trim();
+  if (!src) return 'empty';
+  let pos = 0, neg = 0;
+  for (const e of POS_EMOJI) if (src.includes(e)) pos += 2;
+  for (const e of NEG_EMOJI) if (src.includes(e)) neg += 3;
+  let t = src.toLowerCase().replace(/ё/g, 'е').replace(/[^a-zа-я0-9\s]/gi, ' ').replace(/\s+/g, ' ').trim();
+  t = t.replace(/(.)\1{2,}/g, '$1$1');
+  if (!t) return pos > neg ? 'yes' : neg > pos ? 'no' : 'amb';
+  const pad = ' ' + t + ' ';
+  for (const p of AMB) if (pad.includes(' ' + p + ' ')) return 'amb';
+  if (/^(да|ага|угу|yes|da|yep|yeah|конечно)( (да|ага|конечно|угу))*$/.test(t)) pos += 3;
+  if (/^(не|нет|нетт|неа|no|nope|nah)( (нет|не|нетт))*$/.test(t)) neg += 3;
+  for (const p of POS_PHRASE) if (pad.includes(' ' + p + ' ')) pos += 3;
+  for (const p of NEG_PHRASE) if (pad.includes(' ' + p + ' ')) neg += 3;
+  for (const w of t.split(' ')){
+    if (POS_TOKEN.has(w)) pos += 2;
+    if (NEG_TOKEN.has(w)) neg += 2;
+  }
+  if (!pos && !neg){
+    if (/^(да|ага|конечно|люблю|обожаю)/.test(t)) pos += 1;
+    else if (/^(нет|неа|не\b)/.test(t)) neg += 1;
+    else return 'amb';
+  }
+  if (pos > neg) return 'yes';
+  if (neg > pos) return 'no';
+  return 'amb';
+}
+
+/* ---------- состояния ---------- */
+let state = 'ask';
+const answerCard = $('#answerCard'), resultCard = $('#resultCard'), input = $('#answer');
+const wash = $('#wash'), hint = $('#hint'), hintText = $('#hintText');
+const letterHi = $('#letterHi'), letterQ = $('#letterQ'), letterPs = $('#letterPs'), letterSign = $('#letterSign');
+let ambCount = 0;
+
+function words(el, text, delay){
+  el.innerHTML = text.split(' ').map((w, i) =>
+    `<span style="animation-delay:${(delay + i*.09).toFixed(2)}s">${w}</span>`).join(' ');
+}
+function centerOfEnv(){
+  const r = env.getBoundingClientRect();
+  return { x: r.left + r.width/2, y: r.top + r.height*.35 };
+}
+function showResult(kind, extra){
+  state = kind;
+  answerCard.classList.add('hide');
+  resultCard.className = 'card result show ' + kind;
+  const badge = $('#rBadge'), msg = $('#rMsg'), sub = $('#rSub'), hearts = $('#rHearts'), acts = $('#rActions');
+  const c = centerOfEnv();
+
+  if (kind === 'yes'){
+    badge.innerHTML = I.heart + ' ответ принят';
+    words(msg, 'и я тебя люблю', .18);
+    sub.textContent = extra || 'мур-мур. теперь ты официально мой человек 🤍';
+    hearts.innerHTML = Array.from({length:5}, (_, i) =>
+      `<svg viewBox="0 0 24 24" fill="currentColor" style="animation-delay:${(.5 + i*.09).toFixed(2)}s"><path d="M12 21C3.8 15.4 2 11.9 2 8.9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 10 2.9c0 3-1.8 6.5-10 12.1Z"/></svg>`).join('');
+    acts.innerHTML =
+      `<button type="button" class="btn primary" id="hugBtn">${I.hug} обнять ещё раз</button>
+       <button type="button" class="btn ghost" id="againBtn">${I.back} спросить снова</button>`;
+    wash.className = 'wash yes';
+    body.classList.remove('sad');
+    mood('happy'); say('!!♥', 2200);
+    letterHi.textContent = 'я так и знала 💗';
+    letterQ.innerHTML = 'ты — моё сердце';
+    letterPs.textContent = 'ответ сохранён навсегда. обнимашки прилагаются.';
+    letterSign.textContent = 'твоя китти, навсегда';
+    setMode('love', 7000);
+    if (!RM) burst(c.x, c.y, 44); else burst(c.x, c.y, 8);
+    sfx('yes');
+    $('#hugBtn').addEventListener('click', hug);
+  } else {
+    badge.innerHTML = '🙃 ответ принят';
+    words(msg, 'ну и иди нахуй тогда', .16);
+    sub.textContent = 'ладно. я обиделась. пойду есть мороженое одна. 🍦';
+    hearts.innerHTML = '';
+    acts.innerHTML =
+      `<button type="button" class="btn primary" id="backBtn">${I.heart} ой, я передумал(а)</button>
+       <button type="button" class="btn ghost" id="againBtn">${I.back} спросить снова</button>`;
+    wash.className = 'wash no';
+    body.classList.add('sad');
+    mood('sad'); say('…', 2400);
+    letterHi.textContent = 'ого. вот так значит.';
+    letterQ.innerHTML = 'я всё запомнила';
+    letterPs.textContent = 'конверт закрывается. дождь включается. драмма.';
+    letterSign.textContent = 'бывшая твоя китти';
+    env.classList.remove('slam'); void env.offsetWidth; env.classList.add('slam');
+    setMode('rain', 8000);
+    sadBurst(c.x, c.y);
+    sfx('no');
+    $('#backBtn').addEventListener('click', () => {
+      showResult('yes', 'так бы сразу! я уже простила 💗');
+      toast('котик растаял 🥹');
+    });
+  }
+  $('#againBtn').addEventListener('click', reset);
+  setTimeout(() => {
+    const b = resultCard.querySelector('.btn.primary');
+    if (b) b.focus({ preventScroll:true });
+    resultCard.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block:'nearest' });
+  }, 620);
+}
+function hug(){
+  const c = centerOfEnv();
+  if (!RM) burst(c.x, c.y, 26); else burst(c.x, c.y, 6);
+  kitty.classList.remove('murr'); void kitty.offsetWidth; kitty.classList.add('murr');
+  say('обнимашки ♥', 1500);
+  sfx('hug');
+  const subs = ['ещё крепче. вот так 🤍','мур-мур-мур. не отпускаю.','ты пахнешь домом 🏠','всё, ты мой. официально.'];
+  $('#rSub').textContent = subs[(Math.random()*subs.length)|0];
+}
+function reset(){
+  state = 'ask'; ambCount = 0;
+  resultCard.className = 'card result';
+  answerCard.classList.remove('hide');
+  wash.className = 'wash';
+  body.classList.remove('sad');
+  mood('ask');
+  parts.length = 0; setMode('idle', 0);
+  letterHi.textContent = 'привет, солнце ☀';
+  letterQ.innerHTML = 'ты меня любишь<span class="qd">?</span>';
+  letterPs.textContent = 'ответь честно — я всё пойму. можно своими словами, я умная 🤍';
+  letterSign.textContent = 'твоя китти';
+  hint.className = 'hint';
+  hintText.textContent = 'пиши как чувствуешь — котик поймёт почти любые слова';
+  input.value = ''; $('#sendBtn').classList.remove('ready');
+  env.classList.remove('open');
+  setTimeout(() => { env.classList.add('open'); sfx('open'); }, 260);
+  sfx('ui');
+  setTimeout(() => input.focus({ preventScroll:true }), 700);
+}
+function nudge(text){
+  answerCard.classList.remove('nudge'); void answerCard.offsetWidth; answerCard.classList.add('nudge');
+  hint.className = 'hint warn';
+  hintText.textContent = text;
+  mood('think'); say('?', 1300);
+  setTimeout(() => { if (state === 'ask') mood('ask'); }, 1500);
+  sfx('nudge');
+  ambCount++;
+  if (ambCount >= 2){
+    document.querySelectorAll('.chip').forEach(ch => {
+      ch.classList.remove('hot'); void ch.offsetWidth; ch.classList.add('hot');
+    });
+  }
+}
+function submit(text){
+  if (state !== 'ask') return;
+  const verdict = classify(text);
+  if (verdict === 'empty'){ nudge('напиши хоть что-нибудь 🥺 даже одно слово'); input.focus(); return; }
+  if (verdict === 'amb'){ nudge('котик не понял 🤔 попробуй «да», «конечно», «обожаю» — или «нет»'); input.focus(); return; }
+  hint.className = 'hint';
+  showResult(verdict);
+}
+answerCard.addEventListener('submit', e => { e.preventDefault(); submit(input.value); });
+input.addEventListener('input', () => {
+  $('#sendBtn').classList.toggle('ready', input.value.trim().length > 0);
+  if (hint.classList.contains('warn')){
+    hint.className = 'hint';
+    hintText.textContent = 'пиши как чувствуешь — котик поймёт почти любые слова';
+  }
+});
+input.addEventListener('focus', () => {
+  if (window.innerWidth < 700) setTimeout(() => answerCard.scrollIntoView({ behavior:'smooth', block:'center' }), 320);
+});
+document.querySelectorAll('.chip').forEach(ch => ch.addEventListener('click', () => {
+  input.value = ch.dataset.say;
+  $('#sendBtn').classList.add('ready');
+  submit(ch.dataset.say);
+}));
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){ e.preventDefault(); reset(); }
+});
+
+/* ---------- наклон конверта + единый цикл ---------- */
+let tx = 0, ty = 0, cx = 0, cy = 0, hover = false, raf = 0, prev = 0;
+if (FINE && !RM){
+  window.addEventListener('pointermove', e => {
+    tx = (e.clientX / window.innerWidth) * 2 - 1;
+    ty = (e.clientY / window.innerHeight) * 2 - 1;
+  }, { passive:true });
+  env.addEventListener('pointerenter', () => hover = true);
+  env.addEventListener('pointerleave', () => hover = false);
+}
+function loop(now){
+  const dt = prev ? Math.min(3, (now - prev) / 16.667) : 1;
+  prev = now;
+  if (FINE && !RM){
+    const gx = hover ? ty : 0, gy = hover ? tx : 0;
+    cx += (gx - cx) * .08; cy += (gy - cy) * .08;
+    if (Math.abs(cx) > .002 || Math.abs(cy) > .002)
+      env.style.transform = `rotateX(${(-cx*4).toFixed(2)}deg) rotateY(${(cy*5).toFixed(2)}deg)`;
+    else if (env.style.transform && !env.classList.contains('bounce') && !env.classList.contains('slam'))
+      env.style.transform = '';
+  }
+  stepParts(now, dt);
+  raf = requestAnimationFrame(loop);
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden){ cancelAnimationFrame(raf); raf = 0; prev = 0; }
+  else if (!raf){ prev = 0; raf = requestAnimationFrame(loop); }
+});
+let rzT = 0;
+window.addEventListener('resize', () => { clearTimeout(rzT); rzT = setTimeout(sizeCanvas, 120); });
+window.addEventListener('orientationchange', () => setTimeout(sizeCanvas, 260));
+
+/* ---------- старт ---------- */
+applyTheme();
+updateSound();
+sizeCanvas();
+raf = requestAnimationFrame(loop);
+setTimeout(() => { env.classList.add('open'); sfx('open'); }, RM ? 60 : 1250);
+setTimeout(() => { if (state === 'ask') say('привет ♥', 1800); }, RM ? 200 : 2200);
+})();
+</script>
+</body>
+</html>
